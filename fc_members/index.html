@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,
+ initial-scale=1.0,user-scalable=yes" />
+  <title>MOSHIMO TOURS!</title>
+  <link rel="stylesheet" media="all" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-55687413-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-55687413-2');
+  </script>
+</head>
+<body>
+  <table id="fc">
+    <tbody>
+      <tr>
+        <td class="v_top">
+          <div id="crest">
+            <ul>
+              <li id="crest_1"></li>
+              <li id="crest_2"></li>
+              <li id="crest_3"></li>
+            </ul>
+          </div>
+        </td>
+        <td>
+          <p><span class="stitle">ワールド：</span><span id="server"></span></p>
+          <h3 id="fc_name"></h3>
+          <p id="fc_slogan"></p>
+          <p><span class="stitle">メンバー数：</span><span id="fc_member_count"></span></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div id="free_company_members">
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script>
+    // FCIDを入力
+    var fc_id = '9236038410806874376';
+  </script>
+  <script src='fcm.js'></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+body {
+  background: #404040;
+  font-size: 11px;
+  line-height: 1.5;
+  font-family: "M PLUS Rounded 1c"; }
+
+#crest {
+  width: 82px;
+  height: 82px; }
+  #crest img {
+    width: 100%; }
+  #crest ul {
+    position: relative;
+    padding: 0;
+    margin: 0; }
+    #crest ul li {
+      list-style: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+      margin: 0; }
+      #crest ul li#crest_1 {
+        position: relative; }
+
+#fc {
+  color: #fff;
+  position: relative; }
+  #fc .v_top {
+    vertical-align: top; }
+  #fc h3 {
+    margin: 0 0 5px;
+    font-size: 1.8em; }
+  #fc span.stitle {
+    color: rgba(255, 255, 255, 0.6); }
+  #fc p {
+    margin: 0 0 5px; }
+  #fc .fc_tag {
+    font-size: 12px; }
+
+#free_company_members {
+  display: flex;
+  flex-wrap: wrap; }
+  #free_company_members figure {
+    width: calc(100% - 20px);
+    position: relative;
+    max-width: 414px;
+    padding: 15px;
+    margin: 0px 10px 10px 0;
+    background: #fff;
+    border-radius: 4px;
+    box-sizing: content-box;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    opacity: 0;
+    transition: all 300ms 0s ease; }
+    #free_company_members figure .avatar img {
+      border-radius: 50%;
+      width: 64px;
+      margin: 0 7px 7px 0; }
+    #free_company_members figure .rank_icon {
+      width: 15px;
+      position: relative;
+      top: 3px; }
+    #free_company_members figure .accordion {
+      overflow: hidden;
+      height: 8em;
+      transition: all 300ms 0s ease;
+      cursor: pointer; }
+    #free_company_members figure .data {
+      width: 100%; }
+      #free_company_members figure .data .name {
+        font-size: 1.5em;
+        font-weight: 700;
+        white-space: nowrap; }
+      #free_company_members figure .data .message {
+        background: #e0e0e0;
+        border-radius: 4px;
+        padding: 10px;
+        margin: 8px 0 0 0; }
+      #free_company_members figure .data span.class {
+        display: inline-block; }
+    #free_company_members figure table.cj {
+      border-collapse: collapse;
+      border: none;
+      width: 100%; }
+      #free_company_members figure table.cj td {
+        padding: 1px 3px; }
+        #free_company_members figure table.cj td.job_name {
+          width: 38%; }
+        #free_company_members figure table.cj td.job_level {
+          width: 3em; }
+        #free_company_members figure table.cj td.exp {
+          width: calc(62% - 3em);
+          padding: 0; }
+          #free_company_members figure table.cj td.exp .bar {
+            height: 2px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.1); }
+            #free_company_members figure table.cj td.exp .bar .next {
+              height: 2px;
+              background: #0099ff;
+              transition: all 300ms 0s ease; }
+
+#message {
+  color: #fff; }
+
+.loading {
+  display: block;
+  background: url("loading.png");
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 58px;
+  left: 85px; }
+  .loading.fc {
+    position: absolute;
+    top: 32px;
+    left: 32px; }
+
+.sa {
+  opacity: 0;
+  transition: all .5s ease; }
+
+.sa.show {
+  opacity: 1;
+  transform: none; }
+
+.sa--lr {
+  transform: translate(-100px, 0); }
+
+.sa--rl {
+  transform: translate(100px, 0); }
+
+.sa--up {
+  transform: translate(0, 100px); }
+
+.sa--down {
+  transform: translate(0, -100px); }
+
+.sa--scaleUp {
+  transform: scale(0.5); }
+
+.sa--scaleDown {
+  transform: scale(1.5); }
+
+.sa--rotateL {
+  transform: rotate(180deg); }
+
+.sa--rotateR {
+  transform: rotate(-180deg); }
+
+@media screen and (max-width: 480px) {
+  #free_company_members figure {
+    margin: 0 0 10px; } }
+
+/*# sourceMappingURL=style.css.map */
