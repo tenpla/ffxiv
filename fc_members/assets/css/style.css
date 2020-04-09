@@ -107,7 +107,7 @@ body {
 
 .loading {
   display: block;
-  background: url("loading.png");
+  background: url("../images/loading.png");
   background-size: contain;
   width: 15px;
   height: 15px;
