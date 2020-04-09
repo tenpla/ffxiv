@@ -1,9 +1,3 @@
-body,html {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-}
 body {
   background: #404040;
   font-size: 11px;
@@ -13,12 +7,24 @@ body {
 #crest {
   width: 82px;
   height: 82px;
-  position: relative;
   img {
     width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+  }
+  ul {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    li {
+      list-style: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+      margin: 0;
+      &#crest_1 {
+        position: relative;
+      }
+    }
   }
 }
 #fc {
@@ -133,26 +139,13 @@ body {
   background-size: contain;
   width: 15px;
   height: 15px;
-  background-repeat: no-repeat;
+  position: absolute;
+  top: 58px;
+  left: 85px;
   &.fc {
     position: absolute;
     top: 32px;
     left: 32px;
-  }
-}
-
-.loading_wrapper {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 9999;
-  display: flex;
-  top: 0;
-  left: 0;
-  .cluster {
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
   }
 }
 
