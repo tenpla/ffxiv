@@ -47,11 +47,11 @@ $(function () {
         var fc_url = 'https://jp.finalfantasyxiv.com/lodestone/freecompany/' + fc_id + '/';
         img_before = '<a href="' + fc_url + '" target="fc"><img src="';
         img_after = '" class="crest"></a>';
-        $('#server').text(data.FreeCompany.Server);
+        $('#location').append('<span class="stitle">ワールド:</span>' + data.FreeCompany.Server + ' (' + data.FreeCompany.DC + ')');
         $('#fc_name').text(data.FreeCompany.Name);
         $('#fc_slogan').text(data.FreeCompany.Slogan);
         $('#fc_name').append(' <span class="fc_tag">[' + data.FreeCompany.Tag + ']</span>');
-        $('#fc_member_count').text(data.FreeCompany.ActiveMemberCount + '人');
+        $('#description').append('<span class="stitle">ランク:</span>' + data.FreeCompany.Rank + ' <span class="stitle">メンバー数:</span>' + data.FreeCompany.ActiveMemberCount + '人');
         $('#crest_1').append(img_before + data.FreeCompany.Crest[0] + img_after);
         $('#crest_2').append(img_before + data.FreeCompany.Crest[1] + img_after);
         $('#crest_3').append(img_before + data.FreeCompany.Crest[2] + img_after);
