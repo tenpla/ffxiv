@@ -149,41 +149,6 @@ body {
   }
 }
 
-// scroll_animation.js用
-.sa {
-  opacity: 0;
-  transition: all .5s ease;
-}
-.sa.show {
-  opacity: 1;
-  transform: none;
-}
-.sa--lr {
-  transform: translate(-100px, 0);
-}
-.sa--rl {
-  transform: translate(100px, 0);
-}
-.sa--up {
-  transform: translate(0, 100px);
-}
-.sa--down {
-  transform: translate(0, -100px);
-}
-.sa--scaleUp {
-  transform: scale(.5);
-}
-.sa--scaleDown {
-  transform: scale(1.5);
-}
-.sa--rotateL {
-  transform: rotate(180deg);
-}
-.sa--rotateR {
-  transform: rotate(-180deg);
-}
-
-
 @media screen and (max-width: 480px) {
   #free_company_members {
     figure {
