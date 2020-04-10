@@ -24,12 +24,13 @@ body {
 #fc {
   color: #fff;
   position: relative;
-  .v_top {
+  .vertical_top {
     vertical-align: top;
   }
   h3 {
     margin: 0 0 5px;
     font-size: 1.8em;
+    display: inline-block;
   }
   span.stitle {
     color: rgba(255,255,255,.6);
@@ -39,6 +40,18 @@ body {
   }
   .fc_tag {
     font-size: 12px;
+    position: relative;
+    top: -2px;
+  }
+  .loading_wrapper {
+    position: absolute;
+    top: 37px;
+    left: 0;
+    z-index: 9999;
+    .loading {
+      left: 32px;
+      top: -14px;
+    }
   }
 }
 #free_company_members {
@@ -128,31 +141,26 @@ body {
   color: #fff;
 }
 .loading {
-  display: block;
+  display: inline-block;
   background:url('../images/loading.png');
   background-size: contain;
   width: 15px;
   height: 15px;
+  margin: 0 3px 0 0;
+  position: relative;
+  top: 3px;
   background-repeat: no-repeat;
-  &.fc {
-    position: absolute;
-    top: 32px;
-    left: 32px;
-  }
 }
-
 .loading_wrapper {
-  width: 100%;
-  height: 100%;
+  width: 82px;
+  height: 82px;
+  text-align: center;
+  display: block;
   position: absolute;
-  z-index: 9999;
-  display: flex;
   top: 0;
   left: 0;
   .cluster {
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
+    position: relative;
   }
 }
 

@@ -14,21 +14,24 @@
     <table id="fc">
       <tbody>
         <tr>
-          <td class="v_top">
-            <v-loading :show="show" text="FCデータを取得中..."></v-loading>
+          <td class="vertical_top">
             <div id="crest" v-html="crest"></div>
+            <v-loading :show="show" text="FCデータを取得中..."></v-loading>
           </td>
           <td>
             <p id="location" v-html="server"></p>
-            <h3 id="fc_name"></h3>
-            <p id="fc_slogan"></p>
-            <p id="description"></p>
+            <div class="wraper_fc_name_tag">
+              <h3 id="fc_name" v-text="fc_name"></h3> <span class="fc_tag" v-text="fc_tag"></span>
+            </div>
+            <p id="fc_slogan" v-text="fc_slogan"></p>
+            <p id="description" v-html="fc_description"></p>
           </td>
         </tr>
       </tbody>
     </table>
-    <div id="free_company_members">
-    </div>
+    <ul id="free_company_members">
+      <li v-for="item of fc_members" :key="item.Avatar">{{ item.Avatar }}</li>
+    </ul>
   </div>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://unpkg.com/vue"></script>
