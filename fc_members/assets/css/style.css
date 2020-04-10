@@ -1,3 +1,9 @@
+body, html {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0; }
+
 body {
   background: #404040;
   font-size: 11px;
@@ -6,22 +12,13 @@ body {
 
 #crest {
   width: 82px;
-  height: 82px; }
+  height: 82px;
+  position: relative; }
   #crest img {
-    width: 100%; }
-  #crest ul {
-    position: relative;
-    padding: 0;
-    margin: 0; }
-    #crest ul li {
-      list-style: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      padding: 0;
-      margin: 0; }
-      #crest ul li#crest_1 {
-        position: relative; }
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; }
 
 #fc {
   color: #fff;
@@ -111,13 +108,24 @@ body {
   background-size: contain;
   width: 15px;
   height: 15px;
-  position: absolute;
-  top: 58px;
-  left: 85px; }
+  background-repeat: no-repeat; }
   .loading.fc {
     position: absolute;
     top: 32px;
     left: 32px; }
+
+.loading_wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 9999;
+  display: flex;
+  top: 0;
+  left: 0; }
+  .loading_wrapper .cluster {
+    display: inline-block;
+    justify-content: center;
+    align-items: center; }
 
 @media screen and (max-width: 480px) {
   #free_company_members figure {
