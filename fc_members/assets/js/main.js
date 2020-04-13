@@ -41,13 +41,13 @@ new Vue({
           console.dir(fc),
           console.dir(fc_members),
           fc_url = 'https://jp.finalfantasyxiv.com/lodestone/freecompany/' + fc_id + '/';
-        this.crest = '<a href="' + fc_url + '" target="fc">' + '<img src="' + fc.Crest[0] + '" class="crest">' + '<img src="' + fc.Crest[1] + '" class="crest">' + '<img src="' + fc.Crest[2] + '" class="crest">' + '</a>',
-          this.server = '<span class="stitle">ワールド:</span>' + fc.Server + ' (' + fc.DC + ')',
-          this.fc_name = fc.Name,
-          this.fc_tag = '[' + fc.Tag + ']',
-          this.fc_slogan = fc.Slogan,
-          this.fc_description = '<span class="stitle">メンバー数:</span><span id="fc_member_count">' + fc.ActiveMemberCount + '人</span>',
-          this.fc_members = fc_members
+        this.crest = '<a href="' + fc_url + '" target="fc">' + '<img src="' + fc.Crest[0] + '" class="crest">' + '<img src="' + fc.Crest[1] + '" class="crest">' + '<img src="' + fc.Crest[2] + '" class="crest">' + '</a>';
+        this.server = '<span class="stitle">ワールド:</span>' + fc.Server + ' (' + fc.DC + ')';
+        this.fc_name = fc.Name,
+        this.fc_tag = '[' + fc.Tag + ']';
+        this.fc_slogan = fc.Slogan;
+        this.fc_description = '<span class="stitle">メンバー数:</span><span id="fc_member_count">' + fc.ActiveMemberCount + '人</span>';
+        this.fc_members = fc_members;
       })
       .catch(error => console.log(error))
       .then(function () {

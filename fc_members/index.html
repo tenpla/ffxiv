@@ -30,7 +30,24 @@
       </tbody>
     </table>
     <ul id="free_company_members">
-      <li v-for="item of fc_members" :key="item.Avatar">{{ item.Avatar }}</li>
+      <li v-for="member of fc_members" :key="member.ID" :data-id="member.ID">
+        <div class="avatar">
+          <a :href="'https://jp.finalfantasyxiv.com/lodestone/character/' + member.ID + '/'" target="lodestone">
+            <img :src="member.Avatar"/>
+          </a>
+        </div>
+        <div class="data">
+          <div class="rank"><img :src="member.RankIcon" class="rank_icon" />{{member.Rank}}</div>
+        </div>
+        <div class="name">{{member.Name}}</div>
+        <div class="accordion">
+          <v-loading :show="show" text="個人データを取得中..."></v-loading>
+          <table class="cj">
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </li>
     </ul>
   </div>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
