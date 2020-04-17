@@ -41,12 +41,11 @@ new Vue({
     axios
       .post('https://xivapi.com/freecompany/' + fc_id + '?data=FCM')
       .then(json => {
-        this.result = json;
         var fc = json.data.FreeCompany;
         var fc_members = json.data.FreeCompanyMembers;
-          console.dir(fc);
-          console.dir(fc_members);
-          fc_url = 'https://jp.finalfantasyxiv.com/lodestone/freecompany/' + fc_id + '/';
+        console.dir(fc);
+        console.dir(fc_members);
+        fc_url = 'https://jp.finalfantasyxiv.com/lodestone/freecompany/' + fc_id + '/';
         this.crest = '<a href="' + fc_url + '" target="fc">' + '<img src="' + fc.Crest[0] + '" class="crest">' + '<img src="' + fc.Crest[1] + '" class="crest">' + '<img src="' + fc.Crest[2] + '" class="crest">' + '</a>';
         this.server = fc.Server;
         this.dc = fc.DC;

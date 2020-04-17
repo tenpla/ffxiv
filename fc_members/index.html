@@ -44,10 +44,10 @@
           <v-loading :show="show" text="データ取得中..."></v-loading>
           <table class="cj">
             <tbody>
-              <tr class="class" v-for="(prof, key, i) of member.class_job" :key="prof.ClassID">
+              <tr class="class" v-for="prof of member.class_job" :key="prof.ClassID">
                 <td class="job_name">{{prof.Name}}</td>
                 <td class="job_level">Lv.{{prof.Level}}</td>
-                <td class="exp"><div class="bar"><div class="next" v-bind:data-width="prof.ExpLevel / prof.ExpLevelMax * 100"></div></div></td>
+                <td class="exp"><div class="bar"><div class="next" v-bind:data-width=" Math.round(prof.ExpLevel / prof.ExpLevelMax * 100)"></div></div></td>
               </tr>
             </tbody>
           </table>
