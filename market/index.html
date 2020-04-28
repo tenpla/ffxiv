@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< Updated upstream
 <html>
 <head>
   <meta charset="UTF-8" />
@@ -21,5 +22,44 @@
 <body>
   <script src="https://unpkg.com/jquery"></script>
   <script src='assets/js/main.js'></script>
+=======
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+</head>
+<body>
+  <div id="containter">
+    <p><input type="text" class="i_title" id="i_name"></p>
+    <p><input type="text" class="i_amount" id="i_price"></p>
+    <p><input type="text" class="i_num" id="i_number"></p>
+    <p>
+      <label><input type="radio" name="select_type" value="text">テキスト</label>
+      <label><input type="radio" name="select_type" value="select" checked>セレクトボックス</label>
+      <div class="toggle" >
+        <input type="text" class="i_amount" id="i_reward">
+      </div>
+    </p>
+    <p><input type="text" class="i_commodity" id="i_reward_plus"></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>Reward</td>
+          <td>:<input type="text" class="i_amount" id="i_reward" placeholder="7000"></td>
+        </tr>
+          <td>Plus</td>
+          <td>:<input type="text" class="i_amount" id="i_reward" placeholder="200">×<input type="text" class="i_num" id="plus" placeholder="200"></td>
+      </tbody>
+    </table>
+    <button id="get_data">データ更新</button>
+    <div id="result"></div>
+  </div>
+<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script src="./assets/js/main.js" async=""></script>
+>>>>>>> Stashed changes
 </body>
 </html>
