@@ -47,6 +47,30 @@ body {
     font-size: 12px;
   }
 }
+
+#job_table_wrapper {
+    width: auto;
+    padding: 15px;
+    margin: 0px auto;
+    background: #fff;
+    border-radius: 4px;
+    box-sizing: content-box;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.3);
+    display: inline-block;
+    thead {
+      td {
+        cursor: pointer;
+      }
+    }
+    tbody {
+      th {
+        text-align: left;
+      }
+      td {
+        text-align: right;
+      }
+    }
+}
 #free_company_members {
   display: flex;
   flex-wrap: wrap;
@@ -148,11 +172,19 @@ body {
     left: 32px;
   }
 }
-
 @media screen and (max-width: 480px) {
   #free_company_members {
     figure {
       margin: 0 0 10px;
     }
+  }
+  #job_table_wrapper {
+    display: block;
+    table {
+      width: 100%;
+    }
+  }
+  span.pc {
+    display:none;
   }
 }

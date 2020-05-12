@@ -1,3 +1,4 @@
+var cj_table = [];
 $(function () {
   var job_ids = {
     1: '不明',
@@ -70,23 +71,12 @@ $(function () {
                 console.dir(cj);
                 let cj_array = cj.Character.ClassJobs;
                 let message = cj.Character.Bio;
-                console.log('message=' + message);
+                cj_table[val.Name] = cj.Character.ClassJobs;
                 // ソートの優先順位、Levelが最優先、次にExp値
                 const order = [
                   { key: 'Level', reverse: true },
                   { key: 'ExpLevel', reverse: true }
                 ];
-                // ソート関数（reverse: falseで昇順）
-                function sort_by(list) {
-                  return (a, b) => {
-                    for (let i = 0; i < list.length; i++) {
-                      const order_by = list[i].reverse ? 1 : -1;
-                      if (a[list[i].key] < b[list[i].key]) return order_by;
-                      if (a[list[i].key] > b[list[i].key]) return order_by * -1;
-                    }
-                    return 0;
-                  };
-                }
                 // ソート実行
                 cj_array.sort(sort_by(order));
                 // 結果を表示
@@ -162,3 +152,33 @@ $(function () {
       console.log('FCM完了');
     });
 });
+
+$(document).ajaxStop(function () {
+  // ソートの優先順位、ClassIDが優先
+  const table_order = [
+    { key: 'ClassID', reverse: false }
+  ];
+  for (let h = 0; h < Object.keys(cj_table).length; h++) {
+    let job = cj_table[Object.keys(cj_table)[h]];
+    job.sort(sort_by(table_order));
+    $('#job_table tbody').append('<tr><th>' + Object.keys(cj_table)[h] + '</th><td>' + job[15].Level + '</td><td>' + job[16].Level + '</td><td>' + job[10].Level + '</td><td>' + job[13].Level + '</td><td>' + job[12].Level + '</td><td>' + job[7].Level + '</td><td>' + job[8].Level + '</td><td>' + job[9].Level + '</td><td>' + job[11].Level + '</td></tr>');
+  }
+  console.log('cj_table↓' + cj_table);
+  console.dir(cj_table);
+  $('#job_table').tablesorter();
+})
+
+// ソート関数（reverse: falseで昇順）
+function sort_by(list) {
+  return (a, b) => {
+    for (let i = 0; i < list.length; i++) {
+      const order_by = list[i].reverse ? 1 : -1;
+      if (a[list[i].key] < b[list[i].key]) return order_by;
+      if (a[list[i].key] > b[list[i].key]) return order_by * -1;
+    }
+    return 0;
+  };
+}
+// 0 ナイト
+// 1 拳闘士
+// 3 槍術士

@@ -38,6 +38,22 @@ body {
   #fc .fc_tag {
     font-size: 12px; }
 
+#job_table_wrapper {
+  width: auto;
+  padding: 15px;
+  margin: 0px auto;
+  background: #fff;
+  border-radius: 4px;
+  box-sizing: content-box;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  display: inline-block; }
+  #job_table_wrapper thead td {
+    cursor: pointer; }
+  #job_table_wrapper tbody th {
+    text-align: left; }
+  #job_table_wrapper tbody td {
+    text-align: right; }
+
 #free_company_members {
   display: flex;
   flex-wrap: wrap; }
@@ -121,6 +137,14 @@ body {
 
 @media screen and (max-width: 480px) {
   #free_company_members figure {
-    margin: 0 0 10px; } }
+    margin: 0 0 10px; }
+
+  #job_table_wrapper {
+    display: block; }
+    #job_table_wrapper table {
+      width: 100%; }
+
+  span.pc {
+    display: none; } }
 
 /*# sourceMappingURL=style.css.map */
