@@ -57,9 +57,13 @@ body {
     box-sizing: content-box;
     box-shadow: 1px 1px 5px rgba(0,0,0,.3);
     display: inline-block;
+    th,td {
+      padding: 2px 5px;
+    }
     thead {
       td {
         cursor: pointer;
+        background: #ccc;
       }
     }
     tbody {
@@ -182,6 +186,9 @@ body {
     display: block;
     table {
       width: 100%;
+      th,td {
+        padding: 1px 4px;
+      }
     }
   }
   span.pc {

@@ -1,4 +1,88 @@
 var cj_table = [];
+var fc_id = $(location).attr('search').replace('?fc_id=','');
+console.log('fc_id=' + fc_id);
+if (fc_id) {
+  $('#history_check').val(fc_id);
+}
+//Web Storage が使用可能か判定する関数
+$.fn.checkLocalStorage = function () {
+  if (typeof window.localStorage === "undefined") {
+    return false;
+  }
+  return true;
+};
+
+//Web Storage から 値を読み込む関数(キー指定)
+$.fn.readStorage = function(key) {
+  var keyValue = window.localStorage.getItem(key);
+  //Web Storageからキーを指定して取り出した結果が空の場合
+  if (keyValue === null) {
+    keyValue = JSON.stringify({});
+  }
+  //取得した値をparseする(保存時には
+  keyValue = JSON.parse(keyValue);
+  return keyValue;
+};
+
+//フォームにサジェストを実装する関数
+$.fn.setSuggest = function(historyObj) {
+  //検索用ワード配列
+  var historyArray = [];   //取得したオブジェクトを補完する配列
+  var filterHistoryArray = []; //取得したオブジェクトを整形した配列
+  //オブジェクトを配列に変換 (スペースだけのものを弾く)
+  for (var k in historyObj) {
+    if (typeof historyObj[k] !== "undefined" &&
+　　　　historyObj[k].replace(/\s+/g, "") !== "") {
+      historyArray.push(historyObj[k]);
+    }
+  }
+  //同じ入力値を弾く
+　if (historyArray.length !== 0) {
+    filterHistoryArray = historyArray.filter(function(x, i, self) {
+      return self.indexOf(x) === i;
+    });
+  }
+  var $target = $('#history_check').autocomplete({
+    autoFocus:true,
+    source: filterHistoryArray
+  });
+};
+
+$.fn.writeHistory = function (historyObj, history, historyKey) {
+  var tmpHistories = $(historyObj)[0];
+  var keyNumber = 0;
+  for (var hk in tmpHistories) {
+    if (typeof tmpHistories[hk] === "undefined") {
+      return true;
+    }
+    keyNumber = parseInt(hk);
+  }
+  historyObj[keyNumber+1] = history;
+  window.localStorage.setItem(historyKey, JSON.stringify(historyObj));
+  console.log(historyObj);
+  return true;
+};
+
+$.fn.setSubmitAction = function(historyObj) {
+  $('form').on('submit', function(e) {
+    $.fn.writeHistory(historyObj, $('#history_check').val(), 'history');
+  });
+};
+
+$(function() {
+  if (!$.fn.checkLocalStorage()) {
+    console.log('Local Storage使用不可');
+    return false;
+  }
+  console.log('Local Storage使用可能');
+  var historyObj = $.fn.readStorage('history');
+  console.dir(historyObj);
+  $.fn.setSuggest(historyObj);
+  $.fn.setSubmitAction(historyObj);
+});
+
+// SSS 9236038410806862341
+
 $(function () {
   var job_ids = {
     1: '不明',

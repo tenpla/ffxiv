@@ -47,8 +47,11 @@ body {
   box-sizing: content-box;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
   display: inline-block; }
+  #job_table_wrapper th, #job_table_wrapper td {
+    padding: 2px 5px; }
   #job_table_wrapper thead td {
-    cursor: pointer; }
+    cursor: pointer;
+    background: #ccc; }
   #job_table_wrapper tbody th {
     text-align: left; }
   #job_table_wrapper tbody td {
@@ -143,6 +146,8 @@ body {
     display: block; }
     #job_table_wrapper table {
       width: 100%; }
+      #job_table_wrapper table th, #job_table_wrapper table td {
+        padding: 1px 4px; }
 
   span.pc {
     display: none; } }
