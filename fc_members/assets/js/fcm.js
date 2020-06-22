@@ -77,11 +77,15 @@ $(function() {
   console.log('Local Storage使用可能');
   var historyObj = $.fn.readStorage('history');
   console.dir(historyObj);
+  console.log('historyObj[1]=' + historyObj[1]);
+  fc_id = historyObj[1];
+  $('#history_check').val(historyObj[1]);
   $.fn.setSuggest(historyObj);
   $.fn.setSubmitAction(historyObj);
 });
 
 // SSS 9236038410806862341
+// MOM-T 9236038410806874376
 
 $(function () {
   var job_ids = {
@@ -263,6 +267,3 @@ function sort_by(list) {
     return 0;
   };
 }
-// 0 ナイト
-// 1 拳闘士
-// 3 槍術士

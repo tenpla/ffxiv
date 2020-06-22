@@ -176,6 +176,10 @@ body {
     left: 32px;
   }
 }
+input#history_check {
+  border: none;
+  padding: 5px;
+}
 @media screen and (max-width: 480px) {
   #free_company_members {
     figure {
