@@ -2,6 +2,7 @@ var cj_table = [];
 var fc_id = $(location).attr('search').replace('?fc_id=','');
 console.log('fc_id=' + fc_id);
 if (fc_id) {
+  console.log('パラメータからfc_id(' + fc_id + ')を挿入');
   $('#history_check').val(fc_id);
 }
 //Web Storage が使用可能か判定する関数
@@ -31,9 +32,10 @@ $.fn.setSuggest = function(historyObj) {
   var filterHistoryArray = []; //取得したオブジェクトを整形した配列
   //オブジェクトを配列に変換 (スペースだけのものを弾く)
   for (var k in historyObj) {
-    if (typeof historyObj[k] !== "undefined" &&
-　　　　historyObj[k].replace(/\s+/g, "") !== "") {
-      historyArray.push(historyObj[k]);
+    if (typeof historyObj[k] !== 'undefined' &&
+      historyObj[k] !== '' &&
+      historyObj[k].replace(/\s+/g, '') !== '') {
+      historyArray.unshift(historyObj[k]);
     }
   }
   //同じ入力値を弾く
@@ -69,6 +71,8 @@ $.fn.setSubmitAction = function(historyObj) {
   });
 };
 
+
+
 $(function() {
   if (!$.fn.checkLocalStorage()) {
     console.log('Local Storage使用不可');
@@ -78,8 +82,14 @@ $(function() {
   var historyObj = $.fn.readStorage('history');
   console.dir(historyObj);
   console.log('historyObj[1]=' + historyObj[1]);
-  fc_id = historyObj[1];
-  $('#history_check').val(historyObj[1]);
+  // パラメータがなかったらサジェストの1番目を検索欄に挿入
+  console.log('fc_id=' + fc_id);
+  if (!fc_id) {
+    fc_id = historyObj[1];
+    console.log('URLパラメータがないのでサジェストからFCID(' + fc_id + ')を検索欄に挿入、URLにもパラメータを追加');
+    history.replaceState('', '', '?fc_id=' + fc_id);
+    $('#history_check').val(historyObj[1]);
+  }
   $.fn.setSuggest(historyObj);
   $.fn.setSubmitAction(historyObj);
 });
@@ -132,6 +142,7 @@ $(function () {
   $.getJSON('https://xivapi.com/freecompany/' + fc_id + '?data=FCM')
     .done(function (data) {
       if (data) {
+        console.log('APIでFCID(' + fc_id + ')を送信');
         console.dir(data);
         var fc_url = 'https://jp.finalfantasyxiv.com/lodestone/freecompany/' + fc_id + '/';
         img_before = '<a href="' + fc_url + '" target="fc"><img src="';
@@ -267,3 +278,8 @@ function sort_by(list) {
     return 0;
   };
 }
+
+// Local Storageクリア
+$(document).on('click', '#btn_clear', function () {
+  localStorage.clear();
+});
