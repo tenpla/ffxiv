@@ -174,11 +174,15 @@ body {
     position: absolute;
     top: 32px;
     left: 32px;
+    display: none;
   }
 }
 input#history_check {
   border: none;
   padding: 5px;
+}
+#history_table_wrapper {
+  display: none;
 }
 @media screen and (max-width: 480px) {
   #free_company_members {
