@@ -129,7 +129,6 @@ $(function () {
           img_after = '" class="crest"></a>';
           $('#location').html('<span class="stitle">ワールド:</span>' + data.FreeCompany.Server + ' (' + data.FreeCompany.DC + ')');
           $('#fc_name').text(data.FreeCompany.Name);
-          // fc_array['fc_name'] = data.FreeCompany.Name;
           $('#fc_slogan').text(data.FreeCompany.Slogan);
           $('#fc_name').html(' <span class="fc_tag">[' + data.FreeCompany.Tag + ']</span>');
           $('#description').html('<span class="stitle">ランク:</span>' + data.FreeCompany.Rank + ' <span class="stitle">メンバー数:</span>' + data.FreeCompany.ActiveMemberCount + '人');
@@ -244,9 +243,11 @@ $(function () {
       console.log('URLを検知。FCIDを抽出します。');
       url_array = f_id.split('/');
       f_id = url_array[5];
+      $('#history_check').val(f_id);
     }
     console.log('f_id=' + f_id + 'が入力されました。');
     console.log('追加前のfc_array ↓');
+    fc_array = historyObj;
     console.dir(fc_array);
     let tmp = fc_array;
     tmp.sort(sort_by(order));
