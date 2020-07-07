@@ -240,6 +240,11 @@ $(function () {
   $(document).on('click', '#fc_set', function () {
     $('.loading.fc').show();
     let f_id = $('#history_check').val();
+    if (f_id.match('http')) {
+      console.log('URLを検知。FCIDを抽出します。');
+      url_array = f_id.split('/');
+      f_id = url_array[5];
+    }
     console.log('f_id=' + f_id + 'が入力されました。');
     console.log('追加前のfc_array ↓');
     console.dir(fc_array);
