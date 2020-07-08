@@ -72,9 +72,6 @@ $.fn.readStorage = function(key) {
 };
 
 
-// SSS 9236038410806862341
-// MOM-T 9236038410806874376
-
 $(function () {
   var job_ids = {
     1: '不明',
@@ -245,15 +242,15 @@ $(function () {
       f_id = url_array[5];
       $('#history_check').val(f_id);
     }
-    console.log('f_id=' + f_id + 'が入力されました。');
-    console.log('追加前のfc_array ↓');
-    fc_array = historyObj;
-    console.dir(fc_array);
-    let tmp = fc_array;
-    tmp.sort(sort_by(order));
-    num = Object.keys(tmp).length;
-    console.log('num= ' + num);
+    console.log('FCID(' + f_id + ')が入力されました。');
     if (historyObj[0]) {
+      console.log('追加前のfc_array ↓');
+      fc_array = historyObj;
+      console.dir(fc_array);
+      let tmp = fc_array;
+      tmp.sort(sort_by(order));
+      num = Object.keys(tmp).length;
+      console.log('num= ' + num);
       var filtered = $.grep(tmp,
         function (elem, idx) {
           return (elem.id == f_id);
@@ -279,7 +276,6 @@ $(function () {
     } else {
       fc_array[0] = { 'num': 1, 'id': f_id, 'name': '' };
     }
-    fc_array = tmp;
     console.log('追加後のfc_array↓');
     console.dir(fc_array);
     window.localStorage.setItem('fc_array', JSON.stringify(fc_array));
