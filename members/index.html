@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,
+ initial-scale=1.0,user-scalable=yes" />
+  <title>Members!（Vue.js版）</title>
+  <link rel="stylesheet" media="all" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+  <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+</head>
+<body>
+  <div id="app">
+    <input v-model="id"></input>
+  <button @click="addItem">追加</button>
+  <ul>
+    <li v-for="(item,index) in members" v-bind:data-link="item.id">
+      {{item.name}}
+      <button @click="removeItem(index)">削除</button>
+    </li>
+  </ul>
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue"></script>
+  <script src='assets/js/main.js'></script>
+</body>
+</html>

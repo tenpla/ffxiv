@@ -1,0 +1,41 @@
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Characters!</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+URL:https://jp.finalfantasyxiv.com/lodestone/character/29173511/
+  <div id="app">
+    <ul>
+      <li v-for="item in items">
+        {{ item.Name }} - {{item.url}}
+      </li>
+    </ul>
+    Name: <input v-model="addName"><br />
+    URL: <input v-model="addID"><br />
+    <button v-on:click="add">追加</button><br />
+  </div>
+</body>
+  <script>
+    var characters = new Vue({
+      el: '#app',
+      data: {
+        items: [
+          { Name: 'Google', url: 'http://www.yahoo.co.jp/' },
+          { Name: 'Yahoo!', url: 'https://www.google.co.jp/' }
+        ],
+        addID : 'http://',
+      },
+
+      methods: {
+        add: function (event) {
+          this.items.push({ Name: this.addName, url: this.addID })
+          this.addName = '';
+          this.addID = 'http://';
+        }
+      }
+    })
+  </script>
+</html>

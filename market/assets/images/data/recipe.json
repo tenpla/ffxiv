@@ -1,0 +1,10 @@
+{
+  "URL": "https://xivapi.com/Recipe/3?columns=ID,Name,Icon,ClassJob.Name,ClassJob.Icon&language=ja",
+  "ClassJob": {
+    "Icon": "/cj/1/blacksmith.png",
+    "Name": "鍛冶師"
+  },
+  "ID": 3,
+  "Icon": "/i/030000/030502.png",
+  "Name": "バスタードソード"
+}
