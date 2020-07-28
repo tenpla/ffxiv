@@ -265,7 +265,7 @@ $(function () {
         console.log('sort_r');
         console.dir(tmp);
         $.each(tmp, function (idx, val) {
-          fc_array[idx] = { 'num': idx, 'id': val.id, 'name': val.name };
+          fc_array[idx] = { 'num': idx, 'id': val.f_id, 'name': val.name };
         });
       } else {
         tmp[num] = { 'num': num + 1, 'id': f_id, 'name': '' };
