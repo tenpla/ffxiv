@@ -12,13 +12,13 @@
 <body>
   <div id="app">
     <input v-model="id"></input>
-  <button @click="addItem">追加</button>
-  <ul>
-    <li v-for="(item,index) in members" v-bind:data-link="item.id">
-      {{item.name}}
-      <button @click="removeItem(index)">削除</button>
-    </li>
-  </ul>
+    <button v-on:click="addItem">追加</button>
+    <ul>
+      <li v-for="(item,index) in members" v-bind:data-id="item.id">
+        {{item.name}}
+        <button v-on:click="removeItem(index)">削除</button>
+      </li>
+    </ul>
   </div>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://unpkg.com/vue"></script>

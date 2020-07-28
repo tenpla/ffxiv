@@ -1,0 +1,18 @@
+{
+  "name": "ffxiv",
+  "version": "1.0.0",
+  "description": "for FF XIV",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git remote add origin https://ten_pla@bitbucket.org/ten_pla/ffxiv.git"
+  },
+  "keywords": [
+    "ffxiv"
+  ],
+  "author": "ten pla",
+  "license": "ISC"
+}
