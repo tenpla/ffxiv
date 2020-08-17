@@ -146,6 +146,12 @@ input#history_check {
 #history_table_wrapper {
   display: none; }
 
+.reload {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer; }
+
 @media screen and (max-width: 480px) {
   #free_company_members figure {
     margin: 0 0 10px; }

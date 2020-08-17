@@ -70,49 +70,47 @@ $.fn.readStorage = function(key) {
   keyValue = JSON.parse(keyValue);
   return keyValue;
 };
-
-
+const job_ids = {
+  1: '不明',
+  2: '錬金術師',
+  3: '不明',
+  4: '不明',
+  5: '不明',
+  6: '不明',
+  7: '不明',
+  8: '木工師',
+  9: '鍛冶師',
+  10: '甲冑師',
+  11: '彫金師',
+  12: '革細工師',
+  13: '裁縫師',
+  14: '錬金術師',
+  15: '調理師',
+  16: '採掘師',
+  17: '園芸師',
+  18: '漁師',
+  19: '剣術士 / ナイト',
+  20: '格闘士',
+  21: '斧術師',
+  22: '槍術士 / 竜騎士',
+  23: '弓術士 / 吟遊詩人',
+  24: '幻術士 / 白魔道士',
+  25: '呪術士 / 黒魔道士',
+  26: '不明',
+  27: '巴術士 / 召喚士',
+  28: '巴術士 / 学者',
+  29: '不明',
+  30: '双剣士 / 忍者',
+  31: '機工士',
+  32: '暗黒騎士',
+  33: '占星術師',
+  34: '侍',
+  35: '赤魔道士',
+  36: '青魔道士',
+  37: 'ガンブレイカー',
+  38: '踊り子'
+}
 $(function () {
-  var job_ids = {
-    1: '不明',
-    2: '錬金術師',
-    3: '不明',
-    4: '不明',
-    5: '不明',
-    6: '不明',
-    7: '不明',
-    8: '木工師',
-    9: '鍛冶師',
-    10: '甲冑師',
-    11: '彫金師',
-    12: '革細工師',
-    13: '裁縫師',
-    14: '錬金術師',
-    15: '調理師',
-    16: '採掘師',
-    17: '園芸師',
-    18: '漁師',
-    19: '剣術士 / ナイト',
-    20: '格闘士',
-    21: '斧術師',
-    22: '槍術士 / 竜騎士',
-    23: '弓術士 / 吟遊詩人',
-    24: '幻術士 / 白魔道士',
-    25: '呪術士 / 黒魔道士',
-    26: '不明',
-    27: '巴術士 / 召喚士',
-    28: '巴術士 / 学者',
-    29: '不明',
-    30: '双剣士 / 忍者',
-    31: '機工士',
-    32: '暗黒騎士',
-    33: '占星術師',
-    34: '侍',
-    35: '赤魔道士',
-    36: '青魔道士',
-    37: 'ガンブレイカー',
-    38: '踊り子'
-  }
   $('#crest').append('<div class="loading fc"></div>');
   function get_data(fc_id) {
     $.getJSON('https://xivapi.com/freecompany/' + fc_id + '?data=FCM')
@@ -135,8 +133,8 @@ $(function () {
           $('#free_company_members').html('');
           $('#job_table_wrapper').html('<table id="job_table"><thead><tr><td>Name</td><td>採<span class="pc">掘師</span></td><td>園<span class="pc">芸師</span></td><td>彫<span class="pc">金師</span></td><td>錬<span class="pc">金術師</span></td><td>裁<span class="pc">縫師</span></td><td>木<span class="pc">工師</span></td><td>鍛<span class="pc">冶師</span></td><td>甲<span class="pc">冑師</span></td><td>革<span class="pc">細工師</span></td></tr></thead><tbody></tbody></table>');
           $.each(data.FreeCompanyMembers, function (i, val) {
-            $('#free_company_members').append('<figure class="member" id="member_' + i + '">' + '<div class="avatar"><a href="https://jp.finalfantasyxiv.com/lodestone/character/' + val.ID + '/" target="lodestone"><img src="' + val.Avatar + '"></a></div><div class="data"><div class="rank"><img src="' + val.RankIcon + '" class="rank_icon">' + val.Rank + '</div><div class="name">' + val.Name + '<div class="loading"></div></div></div></fiture>');
-            var c_api = 'https://xivapi.com/character/' + val.ID + '?data=CJ';
+            $('#free_company_members').append(`<figure class="member" id="member_${i}" data-c_id="${val.ID}"><div class="avatar"><a href="https://jp.finalfantasyxiv.com/lodestone/character/${val.ID}/" target="lodestone"><img src="${val.Avatar}"></a></div><div class="data"><div class="rank"><img src="${val.RankIcon}" class="rank_icon">${val.Rank}</div><div class="name">${val.Name}<div class="loading"></div></div></div><div class="reload">Reload</div></fiture>`);
+            let c_api = 'https://xivapi.com/character/' + val.ID + '?data=CJ';
             $('.member').each(function () {
               $(this).delay(100 * i).queue(function () {
                 $(this).css('opacity', '1').dequeue();
@@ -344,4 +342,90 @@ function sort_by(list) {
 // Local Storageクリア
 $(document).on('click', '#btn_clear', function () {
   localStorage.clear();
+});
+
+// Reload
+$(document).on('click', '.reload', function () {
+  let figure_id = `#${$(this).parent('figure').attr('id')}`;
+  let c_id = $(figure_id).data('c_id');
+  console.log(`figure_id= ${figure_id}`);
+  console.log(`c_id= ${c_id}`);
+  if($(figure_id + ' .accordion').length) {
+    $(figure_id).find('.accordion').html('<table class="cj"><tbody></tbody></table>');
+  } else {
+    $(figure_id).find('.data').append('<div class="accordion"><table class="cj"><tbody></tbody></table></div>');
+  }
+  $(figure_id).find('.message').remove();
+  let c_api = `https://xivapi.com/character/${c_id}?data=CJ`;
+  let name = $(figure_id).find('.name').text();
+  $('#job_table_wrapper').html('<table id="job_table"><thead><tr><td>Name</td><td>採<span class="pc">掘師</span></td><td>園<span class="pc">芸師</span></td><td>彫<span class="pc">金師</span></td><td>錬<span class="pc">金術師</span></td><td>裁<span class="pc">縫師</span></td><td>木<span class="pc">工師</span></td><td>鍛<span class="pc">冶師</span></td><td>甲<span class="pc">冑師</span></td><td>革<span class="pc">細工師</span></td></tr></thead><tbody></tbody></table>');
+  $.getJSON(c_api)
+    .done(function (cj) {
+      if (cj) {
+        console.log(name + 'のデータをリロード');
+        console.dir(cj);
+        let cj_array = cj.Character.ClassJobs;
+        let message = cj.Character.Bio;
+        cj_table[name] = cj.Character.ClassJobs;
+        // ソートの優先順位、Levelが最優先、次にExp値
+        const order = [
+          { key: 'Level', reverse: true },
+          { key: 'ExpLevel', reverse: true }
+        ];
+        // ソート実行
+        cj_array.sort(sort_by(order));
+        // 結果を表示
+        for (let j = 0; j < 29; j++) {
+          let job_id = cj_array[j].JobID;
+          let job_level = cj_array[j].Level;
+          let job_name = job_ids[job_id];
+          let exp_level = cj_array[j].ExpLevel;
+          let exp_level_max = cj_array[j].ExpLevelMax;
+          let next;
+          if (job_level !== 0) {
+            if (exp_level_max !== 0) {
+              next = Math.round(exp_level / exp_level_max * 100);
+            } else {
+              next = 0;
+            }
+          } else {
+            next = 0;
+          }
+          console.log('Reload Complete! job_id=' + job_id + ' job_name=' + job_name + '[' + job_level + ']' + ' job_en=' + cj_array[j].Name + ' EXP=' + next);
+          if (job_level !== 0) {
+            $(figure_id).find('.cj tbody').append('<tr class="class"><td class="job_name">' + job_name + '</td><td class="job_level">Lv.' + job_level + '</td>' + '</td><td class="exp"><div class="bar"><div class="next" style="width:0%; height:2px;"></div></div></td></tr>');
+            $(figure_id).find('.next').last().attr('data-width', next + '%');
+          }
+          $(figure_id).each(function (i) {
+            if ($(this).attr('data-width') != undefined) {
+              $(this).delay(100 * i).queue(function () {
+                $(this).css('width', $(this).data('width')).dequeue();
+              });
+            }
+          });
+        }
+        $(figure_id).find('.loading').hide(1000);
+        if (message == '-' || message == '') {
+        } else {
+          $(figure_id).find('.data').append('<div class="message">' + message + '</div>');
+        }
+      } else {
+        console.log('error');
+      }
+      $(document).on('click', '.accordion', function () {
+        $(this).addClass('expanded');
+        $(this).css('height', $(this).find('table').height());
+      });
+      $(document).on('click', '.accordion.expanded', function () {
+        $(this).removeClass('expanded');
+        $(this).css('height', '8em');
+      });
+    })
+    .fail(function (jqXHR, textStatus, errorThrown) {
+      console.log('エラー：' + textStatus);
+      console.log('テキスト：' + jqXHR.responseText);
+    })
+    .always(function () {
+      console.log('M完了');
+    });
 });
