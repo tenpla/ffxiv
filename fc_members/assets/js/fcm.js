@@ -240,9 +240,14 @@ $(function () {
       console.log('URLを検知。FCIDを抽出します。');
       url_array = f_id.split('/');
       f_id = url_array[5];
+      console.log('f_id=' + f_id);
+      console.log(typeof f_id);
+      f_id = String(f_id);
+      console.log('f_id=' + f_id);
+      console.log(typeof f_id);
       $('#history_check').val(f_id);
     }
-    console.log('FCID(' + f_id + ')が入力されました。');
+    console.log(`FCID(${f_id})が入力されました。`);
     if (historyObj[0]) {
       console.log('追加前のfc_array ↓');
       fc_array = historyObj;
@@ -256,17 +261,22 @@ $(function () {
           return (elem.id == f_id);
         }
       );
+      console.log('filtered');
+      console.log(filtered);
       if (filtered) {
         var same_name = filtered[0]['name'];
         var same_num = filtered[0]['num'];
         delete tmp[same_num - 1];
+        console.log('f_id=' + f_id + 'を配列に追加');
         tmp[num] = { 'num': num + 1, 'id': f_id, 'name': same_name };
         tmp.sort(sort_by(order_r));
         console.log('sort_r');
         console.dir(tmp);
-        $.each(tmp, function (idx, val) {
-          fc_array[idx] = { 'num': idx, 'id': val.f_id, 'name': val.name };
-        });
+        // $.each(tmp, function (idx, val) {
+        //   if(val.id!=='undefined'){
+        //     fc_array[idx] = { 'num': idx, 'id': val.id, 'name': val.name };
+        //   }
+        // });
       } else {
         tmp[num] = { 'num': num + 1, 'id': f_id, 'name': '' };
         $.each(tmp, function (idx, val) {
